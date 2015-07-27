@@ -27,3 +27,4 @@ NDK_R5_TOOLCHAIN := 1
 endif
 
 include $(call all-subdir-makefiles)
+

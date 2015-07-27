@@ -22,9 +22,9 @@ LOCAL_SRC_FILES += $(foreach F, $(APP_SUBDIRS), $(addprefix $(F)/,$(notdir $(wil
 LOCAL_CFLAGS :=
 LOCAL_C_INCLUDES :=
 
-ifeq ($(CRYSTAX_TOOLCHAIN)$(NDK_R5_TOOLCHAIN),)
-LOCAL_C_INCLUDES += $(LOCAL_PATH)/../stlport/stlport
-endif
+# ifeq ($(CRYSTAX_TOOLCHAIN)$(NDK_R5_TOOLCHAIN),)
+# LOCAL_C_INCLUDES += $(LOCAL_PATH)/../stlport/stlport
+# endif
 
 LOCAL_C_INCLUDES += $(foreach D, $(APP_SUBDIRS), $(LOCAL_PATH)/$(D)) \
 					$(LOCAL_PATH)/../sdl-$(SDL_VERSION)/include \
@@ -45,6 +45,7 @@ LOCAL_SHARED_LIBRARIES := sdl-$(SDL_VERSION) $(filter-out $(APP_AVAILABLE_STATIC
 
 LOCAL_STATIC_LIBRARIES := $(filter $(APP_AVAILABLE_STATIC_LIBS), $(COMPILED_LIBRARIES))
 
+# LOCAL_STATIC_LIBRARIES += stlport sdl_fake_stdout
 LOCAL_STATIC_LIBRARIES += stlport sdl_fake_stdout
 
 LOCAL_LDLIBS := -lGLESv1_CM -ldl -llog -lz

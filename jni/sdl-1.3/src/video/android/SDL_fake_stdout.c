@@ -34,7 +34,7 @@ int __SDL_android_printf(const char * fmt, ...)
 	*/
 	return_value = vsnprintf(buff, sizeof(buff), fmt, ap);
 	va_end(ap);
-	__android_log_print(ANDROID_LOG_INFO, "libSDL", buff);
+	__android_log_print(ANDROID_LOG_INFO, "libSDL", "%s", buff);
 	//delete buff;
 	return return_value;
 }
