@@ -61,8 +61,7 @@ public class MainActivity extends Activity {
   }
 
   public void showMessage(String messge) {
-    Toast t = Toast.makeText(this, messge, 3000);
-    t.show();
+    Toast.makeText(this, messge, Toast.LENGTH_SHORT).show();
   }
 
   public void startDosBox(boolean settingsLoaded) {
@@ -122,7 +121,7 @@ public class MainActivity extends Activity {
     if (mGLView != null)
       mGLView.exitApp();
     super.onDestroy();
-    System.exit(0);
+    // System.exit(0);
   }
 
   public void showScreenKeyboard() {
@@ -137,6 +136,7 @@ public class MainActivity extends Activity {
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {
+    /*
     switch (item.getItemId()) {
     case R.id.quit_app:
       AlertDialog alertDialog = new AlertDialog.Builder(this).create();
@@ -175,7 +175,7 @@ public class MainActivity extends Activity {
       showScreenKeyboard();
       return true;
     }
-
+*/
     return false;
   }
 
