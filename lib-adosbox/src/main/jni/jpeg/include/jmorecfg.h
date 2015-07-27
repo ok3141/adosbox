@@ -10,14 +10,18 @@
  * optimizations.  Most users will not need to touch this file.
  */
 
+#ifndef JMORECFG_H
+#define JMORECFG_H
+
 /*
  * Define ANDROID_RGB to enable specific optimizations for Android
  *   JCS_RGBA_8888 support
  *   JCS_RGB_565 support
  * 
  */
-
+#ifndef ANDROID_RGB
 #define ANDROID_RGB
+#endif
 
 #ifdef ANDROID_RGB
 #define PACK_SHORT_565(r,g,b)  ((((r)<<8)&0xf800)|(((g)<<3)&0x7E0)|((b)>>3))
@@ -385,3 +389,5 @@ typedef int boolean;
 #endif
 
 #endif /* JPEG_INTERNAL_OPTIONS */
+
+#endif /* JMORECFG_H */
