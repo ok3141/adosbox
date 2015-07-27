@@ -235,8 +235,6 @@ class DemoRenderer extends GLSurfaceView_SDL.Renderer {
 																				// from
 																				// native
 																				// code
-
-		context.onDestroy();
 	}
 
 	public int swapBuffers() // Called from native code

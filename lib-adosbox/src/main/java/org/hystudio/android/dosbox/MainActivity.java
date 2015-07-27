@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -29,7 +30,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.Toast;
 
-public class MainActivity extends Activity {
+import java.util.Arrays;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
   public static DemoGLSurfaceView mGLView;
 
   private boolean _isPaused = false;
@@ -136,9 +140,15 @@ public class MainActivity extends Activity {
   }
 
   public boolean onOptionsItemSelected(MenuItem item) {
-    /*
-    switch (item.getItemId()) {
-    case R.id.quit_app:
+    List<Integer> ids = Arrays.asList(
+            R.id.quit_app,
+            R.id.dosbox_settings,
+            R.id.joystick,
+            R.id.keyboard
+    );
+
+    switch (ids.indexOf(item.getItemId())) {
+    case 0:
       AlertDialog alertDialog = new AlertDialog.Builder(this).create();
       alertDialog.setIcon(R.drawable.alert_dialog_icon);
       String confirimationTitle = getString(R.string.quit_confirmation_title);
@@ -162,20 +172,20 @@ public class MainActivity extends Activity {
           });
       alertDialog.show();
       return true;
-    case R.id.dosbox_settings:
+    case 1:
       DOSBoxSettings.showConfigMainMenu(this);
       return true;
-    case R.id.joystick:
+    case 2:
       Settings.toggleJoyStick();
       return true;
-    case R.id.settings:
+    case 3:
       Settings.showConfig(this);
       return true;
-    case R.id.keyboard:
+    case 4:
       showScreenKeyboard();
       return true;
     }
-*/
+
     return false;
   }
 
@@ -189,12 +199,16 @@ public class MainActivity extends Activity {
   }
 
   @Override
-  public boolean dispatchTouchEvent(final MotionEvent ev) {
-    if (mGLView != null)
+  public boolean onTouchEvent(MotionEvent ev) {
+    if (mGLView != null) {
       mGLView.onTouchEvent(ev);
-    else if (touchListener != null)
+      return true;
+    } else if (touchListener != null) {
       touchListener.onTouchEvent(ev);
-    return true;
+      return true;
+    }
+
+    return false;
   }
 
   @Override
